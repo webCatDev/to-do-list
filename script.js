@@ -35,6 +35,8 @@ input.addEventListener("keydown", (event) => {
 
   if (event.key === "Enter" && input.value.trim() !== "") {
         letterCount.textContent = "0";
+        letterWrapper.classList.remove("warning");
+        letterWrapper.classList.remove("stop");
 
     const listItem = document.createElement("li");
     listItem.innerHTML = `<span class="text">${input.value}</span
