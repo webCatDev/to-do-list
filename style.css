@@ -188,6 +188,8 @@ li:not(:last-child){
 }
 
 .are-you-sure{
+    visibility: hidden;
+    opacity: 0;
     text-align: center;
     font-size: 2.5rem;
     background-color: azure;
@@ -208,8 +210,6 @@ li:not(:last-child){
     -o-transform: translate(-50%, -50%);
     z-index: 99;
     border: 1rem solid #c41d0b;
-    visibility: hidden;
-    opacity: 0;
     transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -webkit-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -moz-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
