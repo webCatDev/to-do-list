@@ -188,7 +188,6 @@ li:not(:last-child){
 }
 
 .are-you-sure{
-    display: hidden;
     visibility: hidden;
     opacity: 0;
     text-align: center;
@@ -219,7 +218,6 @@ li:not(:last-child){
 }
 
 .are-you-sure.show {
-    display: block;
 visibility: visible;
 opacity: 1;
 }
