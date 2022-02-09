@@ -208,18 +208,19 @@ li:not(:last-child){
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
-    z-index: 99;
     border: 1rem solid #c41d0b;
     transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -webkit-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -moz-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -ms-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -o-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
+    z-index: -1;
 }
 
 .are-you-sure.show {
 visibility: visible;
 opacity: 1;
+z-index: 99;
 }
 
 
