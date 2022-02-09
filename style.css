@@ -214,13 +214,12 @@ li:not(:last-child){
     -moz-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -ms-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
     -o-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
-    z-index: -1;
+    z-index: 99;
 }
 
 .are-you-sure.show {
 visibility: visible;
 opacity: 1;
-z-index: 99;
 }
 
 
