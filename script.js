@@ -8,7 +8,7 @@ const noButton = document.getElementById("no");
 const deleteButtons= document.getElementsByClassName("delete")
 const doneButtons = document.getElementsByClassName("done");
 
-var max = 1;
+var max = 20;
 
 input.addEventListener("keyup", function (event) {
   event.target.value = event.target.value.substring(0, max);
