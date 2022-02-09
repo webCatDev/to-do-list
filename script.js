@@ -30,6 +30,7 @@ input.addEventListener("keydown", (event) => {
     letterWrapper.classList.add("stop");
   } else {
     letterWrapper.classList.remove("warning");
+    letterWrapper.classList.remove("stop");
   }
 
   if (event.key === "Enter" && input.value.trim() !== "") {
