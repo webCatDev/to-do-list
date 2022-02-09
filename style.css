@@ -210,11 +210,11 @@ li:not(:last-child){
     border: 1rem solid #c41d0b;
     visibility: hidden;
     opacity: 0;
-    transition: all .5s ease-in-out;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
+    transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
+    -webkit-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
+    -moz-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
+    -ms-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
+    -o-transition: visibility .5s ease-in-out,opacity .5s ease-in-out;
 }
 
 .are-you-sure.show {
