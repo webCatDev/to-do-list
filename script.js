@@ -27,9 +27,10 @@ function createListItem(text) {
   toDoListElement.appendChild(listItem);
 }
 
-function renderList(){
-  itemsArray.forEach(element => {
-    createListItem(element)
+function renderList() {
+  itemsArray.forEach((element) => {
+    createListItem(element);
+    lineThrough()
   });
 }
 
@@ -49,7 +50,7 @@ function checkInputLength() {
 
 //Functions end
 
-renderList()
+renderList();
 var max = 20;
 
 input.addEventListener("input", () => {
@@ -74,21 +75,22 @@ input.addEventListener("keydown", (event) => {
 
     createListItem(input.value);
     input.value = "";
+    lineThrough()
   }
 });
 
+// Elemanı silme
 toDoListElement.addEventListener("mouseover", () => {
   for (const deleteButton of deleteButtons) {
     deleteButton.addEventListener("click", () => {
       areYouSureDialog.classList.add("show");
       yesButton.addEventListener("click", () => {
-        const index=[...deleteButtons].indexOf(deleteButton)
-        console.log(index)
-        itemsArray.splice(
-          itemsArray[index],
-          1
-        );
-        
+        const index = [...deleteButtons].indexOf(deleteButton);
+        console.log(index);
+        if (index > -1) {
+          itemsArray.splice(itemsArray[index], 1);
+        }
+
         localStorage.setItem("items", JSON.stringify(itemsArray));
         areYouSureDialog.classList.remove("show");
         deleteButton.parentElement.parentElement.remove();
@@ -101,12 +103,14 @@ noButton.addEventListener("click", () => {
   areYouSureDialog.classList.remove("show");
 });
 
-toDoListElement.addEventListener("mouseover", () => {
-  for (const doneButton of doneButtons) {
-    doneButton.addEventListener("click", () => {
-      doneButton.parentElement.previousElementSibling.classList.toggle(
-        "finished"
-      );
-    });
-  }
-});
+function lineThrough(){
+for (const doneButton of doneButtons) {
+  doneButton.addEventListener("click", () => {
+    doneButton.parentElement.previousElementSibling.classList.toggle(
+      "finished"
+    );
+  });
+}
+
+}
+  
