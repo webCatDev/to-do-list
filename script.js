@@ -27,11 +27,21 @@ function createListItem(text) {
   toDoListElement.appendChild(listItem);
 }
 
+function lineThrough() {
+  for (const doneButton of doneButtons) {
+    doneButton.addEventListener("click", () => {
+      doneButton.parentElement.previousElementSibling.classList.toggle(
+        "finished"
+      );
+    });
+  }
+}
+
 function renderList() {
   itemsArray.forEach((element) => {
     createListItem(element);
-    lineThrough()
   });
+  lineThrough()
 }
 
 function checkInputLength() {
@@ -72,10 +82,9 @@ input.addEventListener("keydown", (event) => {
 
     itemsArray.push(input.value);
     localStorage.setItem("items", JSON.stringify(itemsArray));
-
-    createListItem(input.value);
+    toDoListElement.innerHTML="";
+    renderList()
     input.value = "";
-    lineThrough()
   }
 });
 
@@ -88,7 +97,7 @@ toDoListElement.addEventListener("mouseover", () => {
         const index = [...deleteButtons].indexOf(deleteButton);
         console.log(index);
         if (index > -1) {
-          itemsArray.splice(itemsArray[index], 1);
+          itemsArray.splice(index, 1);
         }
 
         localStorage.setItem("items", JSON.stringify(itemsArray));
@@ -103,14 +112,5 @@ noButton.addEventListener("click", () => {
   areYouSureDialog.classList.remove("show");
 });
 
-function lineThrough(){
-for (const doneButton of doneButtons) {
-  doneButton.addEventListener("click", () => {
-    doneButton.parentElement.previousElementSibling.classList.toggle(
-      "finished"
-    );
-  });
-}
 
-}
   
