@@ -3,10 +3,12 @@ const toDoListElement = document.getElementById("to-do-list");
 const letterCount = document.getElementById("letter-count");
 const letterCountWrapper = document.getElementById("letter-wrapper");
 const areYouSureDialog = document.getElementById("are-you-sure");
+const areYouSureText = document.getElementById("are-you-sure-text");
 const yesButton = document.getElementById("yes");
 const noButton = document.getElementById("no");
 const deleteButtons = document.getElementsByClassName("delete");
 const doneButtons = document.getElementsByClassName("done");
+const listText = document.getElementsByClassName("text");
 
 let itemsArray = localStorage.getItem("items")
   ? JSON.parse(localStorage.getItem("items"))
@@ -29,17 +31,35 @@ function createListItem(text) {
 
 function lineThrough() {
   for (const doneButton of doneButtons) {
+    const index= [...doneButtons].indexOf(doneButton)
+  
+   
     doneButton.addEventListener("click", () => {
-      doneButton.parentElement.previousElementSibling.classList.toggle(
+      
+    if (!itemsArray[index].lineThrough) {
+      doneButton.parentElement.previousElementSibling.classList.add("finished");
+      document.getElementById("draw").play();
+
+      itemsArray[index].lineThrough = true;
+      localStorage.setItem("items", JSON.stringify(itemsArray));
+    } else {
+      doneButton.parentElement.previousElementSibling.classList.remove(
         "finished"
       );
+      document.getElementById("erase").play();
+      itemsArray[index].lineThrough = false;
+      localStorage.setItem("items", JSON.stringify(itemsArray));
+    }
     });
   }
 }
 
 function renderList() {
-  itemsArray.forEach((element) => {
-    createListItem(element);
+  itemsArray.forEach((element,index) => {
+    createListItem(element.text);
+    if (element.lineThrough) {
+      listText[index].classList.add("finished");
+    }
   });
   lineThrough()
 }
@@ -64,6 +84,7 @@ renderList();
 var max = 20;
 
 input.addEventListener("input", () => {
+  
   input.value = input.value.replace(/[><]/g, "");
 });
 
@@ -72,6 +93,7 @@ input.addEventListener("keyup", function (event) {
 });
 
 input.addEventListener("keydown", (event) => {
+  
   letterCount.textContent = input.value.length;
   checkInputLength();
 
@@ -80,7 +102,7 @@ input.addEventListener("keydown", (event) => {
     letterCountWrapper.classList.remove("warning");
     letterCountWrapper.classList.remove("stop");
 
-    itemsArray.push(input.value);
+    itemsArray.push({text:input.value,lineThrough:false });
     localStorage.setItem("items", JSON.stringify(itemsArray));
     toDoListElement.innerHTML="";
     renderList()
@@ -92,15 +114,17 @@ input.addEventListener("keydown", (event) => {
 toDoListElement.addEventListener("mouseover", () => {
   for (const deleteButton of deleteButtons) {
     deleteButton.addEventListener("click", () => {
+      areYouSureText.textContent=deleteButton.parentElement.previousElementSibling.textContent
       areYouSureDialog.classList.add("show");
+
       yesButton.addEventListener("click", () => {
         const index = [...deleteButtons].indexOf(deleteButton);
-        console.log(index);
         if (index > -1) {
           itemsArray.splice(index, 1);
         }
 
         localStorage.setItem("items", JSON.stringify(itemsArray));
+        document.getElementById("remove").play();
         areYouSureDialog.classList.remove("show");
         deleteButton.parentElement.parentElement.remove();
       });
