@@ -28,23 +28,33 @@
 
     <div class="container">
       <div class="wrapper">
-          <div class="input-field">
-            <input type="text" placeholder="Listene bir şey ekle" id="input" maxlength="20" />
-            <div class="letter-count-wrapper" id="letter-wrapper"><span id="letter-count">0</span><span>/20</span></div>
+        <div class="settings" >
+         <i class="fa-solid fa-gear" id="settings-button"></i>
+         <ul id="settings-list" class="settings-list">
+           <li class="settings-list-item" id="mute"><i class="fa-solid fa-volume-xmark sound-icon" id="mute-icon"></i>Sesi kapa</li>
+         </ul>
+        </div>
+        <div class="input-field">
+          <input
+            type="text"
+            placeholder="Listene bir şey ekle"
+            id="input"
+            maxlength="20"
+          />
+          <div class="letter-count-wrapper" id="letter-wrapper">
+            <span id="letter-count">0</span><span>/20</span>
           </div>
-        <ul id="to-do-list">
-        </ul>
+        </div>
+        <ul id="to-do-list"></ul>
       </div>
 
       <div class="are-you-sure" id="are-you-sure">
         <p id="are-you-sure-text"></p>
-    <p>Bu maddeyi silmek istediğinize emin misiniz?</p>
-   <span class="are-you-sure-answers"><span id="yes">Evet</span> <span id="no">Hayır</span></span>
-</div>
+        <p>Bu maddeyi silmek istediğinize emin misiniz?</p>
+        <span class="are-you-sure-answers"
+          ><span id="yes">Evet</span> <span id="no">Hayır</span></span
+        >
+      </div>
     </div>
-
-    
   </body>
 </html>
-
-

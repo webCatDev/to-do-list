@@ -1,5 +1,9 @@
 const input = document.getElementById("input");
 const toDoListElement = document.getElementById("to-do-list");
+const settingsButton = document.getElementById("settings-button");
+const settingsList = document.getElementById("settings-list");
+const muteButton = document.getElementById("mute");
+const muteIcon = document.getElementById("mute-icon");
 const letterCount = document.getElementById("letter-count");
 const letterCountWrapper = document.getElementById("letter-wrapper");
 const areYouSureDialog = document.getElementById("are-you-sure");
@@ -17,6 +21,31 @@ let itemsArray = localStorage.getItem("items")
 localStorage.setItem("items", JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem("items"));
 
+settingsButton.addEventListener("click", () => {
+  settingsButton.classList.toggle("active");
+  settingsList.classList.toggle("active");
+});
+
+let open = true;
+localStorage.setItem("unmute",open)
+
+muteButton.addEventListener("click", () => {
+  if (JSON.parse(localStorage.getItem("unmute"))) {
+    muteButton.innerHTML = `<i class="fa-solid fa-volume-high sound-icon" id="mute-icon"></i>Sesi aç`;
+    document.getElementById("draw").muted = true;
+    document.getElementById("erase").muted = true;
+    document.getElementById("remove").muted = true;
+
+    localStorage.setItem("unmute", false);
+  } else {
+    muteButton.innerHTML = `<i class="fa-solid fa-volume-xmark sound-icon" id="mute-icon"></i>Sesi kapa`;
+    document.getElementById("draw").muted = false;
+    document.getElementById("erase").muted = false;
+    document.getElementById("remove").muted = false;
+    localStorage.setItem("unmute", true);
+  }
+});
+
 // Functions
 function createListItem(text) {
   const listItem = document.createElement("li");
@@ -31,37 +60,37 @@ function createListItem(text) {
 
 function lineThrough() {
   for (const doneButton of doneButtons) {
-    const index= [...doneButtons].indexOf(doneButton)
-  
-   
-    doneButton.addEventListener("click", () => {
-      
-    if (!itemsArray[index].lineThrough) {
-      doneButton.parentElement.previousElementSibling.classList.add("finished");
-      document.getElementById("draw").play();
+    const index = [...doneButtons].indexOf(doneButton);
 
-      itemsArray[index].lineThrough = true;
-      localStorage.setItem("items", JSON.stringify(itemsArray));
-    } else {
-      doneButton.parentElement.previousElementSibling.classList.remove(
-        "finished"
-      );
-      document.getElementById("erase").play();
-      itemsArray[index].lineThrough = false;
-      localStorage.setItem("items", JSON.stringify(itemsArray));
-    }
+    doneButton.addEventListener("click", () => {
+      if (!itemsArray[index].lineThrough) {
+        doneButton.parentElement.previousElementSibling.classList.add(
+          "finished"
+        );
+        document.getElementById("draw").play();
+
+        itemsArray[index].lineThrough = true;
+        localStorage.setItem("items", JSON.stringify(itemsArray));
+      } else {
+        doneButton.parentElement.previousElementSibling.classList.remove(
+          "finished"
+        );
+        document.getElementById("erase").play();
+        itemsArray[index].lineThrough = false;
+        localStorage.setItem("items", JSON.stringify(itemsArray));
+      }
     });
   }
 }
 
 function renderList() {
-  itemsArray.forEach((element,index) => {
+  itemsArray.forEach((element, index) => {
     createListItem(element.text);
     if (element.lineThrough) {
       listText[index].classList.add("finished");
     }
   });
-  lineThrough()
+  lineThrough();
 }
 
 function checkInputLength() {
@@ -84,7 +113,6 @@ renderList();
 var max = 20;
 
 input.addEventListener("input", () => {
-  
   input.value = input.value.replace(/[><]/g, "");
 });
 
@@ -93,7 +121,6 @@ input.addEventListener("keyup", function (event) {
 });
 
 input.addEventListener("keydown", (event) => {
-  
   letterCount.textContent = input.value.length;
   checkInputLength();
 
@@ -102,10 +129,10 @@ input.addEventListener("keydown", (event) => {
     letterCountWrapper.classList.remove("warning");
     letterCountWrapper.classList.remove("stop");
 
-    itemsArray.push({text:input.value,lineThrough:false });
+    itemsArray.push({ text: input.value, lineThrough: false });
     localStorage.setItem("items", JSON.stringify(itemsArray));
-    toDoListElement.innerHTML="";
-    renderList()
+    toDoListElement.innerHTML = "";
+    renderList();
     input.value = "";
   }
 });
@@ -114,7 +141,8 @@ input.addEventListener("keydown", (event) => {
 toDoListElement.addEventListener("mouseover", () => {
   for (const deleteButton of deleteButtons) {
     deleteButton.addEventListener("click", () => {
-      areYouSureText.textContent=deleteButton.parentElement.previousElementSibling.textContent
+      areYouSureText.textContent =
+        deleteButton.parentElement.previousElementSibling.textContent;
       areYouSureDialog.classList.add("show");
 
       yesButton.addEventListener("click", () => {
@@ -135,6 +163,3 @@ toDoListElement.addEventListener("mouseover", () => {
 noButton.addEventListener("click", () => {
   areYouSureDialog.classList.remove("show");
 });
-
-
-  
