@@ -129,12 +129,11 @@ var max = 20;
 
 input.addEventListener("input", () => {
   letterCount.textContent = input.value.length;
+  input.value = input.value.substring(0, max);
   input.value = input.value.replace(/[><]/g, "");
 });
 
-input.addEventListener("keyup", function (event) {
-  event.target.value = event.target.value.substring(0, max);
-});
+
 
 input.addEventListener("keydown", (event) => {
   
