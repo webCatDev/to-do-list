@@ -10,11 +10,7 @@ html {
   font-size: 62.5%;
 }
 
-@media (max-width: 768px) {
-  html {
-    font-size: 50%;
-  }
-}
+
 
 body {
   font-family: "Poppins", sans-serif;
@@ -364,4 +360,13 @@ li:not(:last-child) {
 #no {
   font-weight: bold;
   border: 1px solid black;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+  ::-webkit-scrollbar {
+  width: 0;
+}
 }
