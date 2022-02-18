@@ -26,10 +26,16 @@ settingsButton.addEventListener("click", () => {
   settingsList.classList.toggle("active");
 });
 
-let open = true;
-localStorage.setItem("unmute",open)
+
+
+  if (!localStorage.getItem("unmute")) {
+    localStorage.setItem("unmute", true);
+  }
+
 
 muteButton.addEventListener("click", () => {
+
+
   if (JSON.parse(localStorage.getItem("unmute"))) {
     muteButton.innerHTML = `<i class="fa-solid fa-volume-high sound-icon" id="mute-icon"></i>Sesi aç`;
     document.getElementById("draw").muted = true;
