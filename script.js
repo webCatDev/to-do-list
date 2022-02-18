@@ -35,7 +35,6 @@ muteButton.addEventListener("click", () => {
     document.getElementById("draw").muted = true;
     document.getElementById("erase").muted = true;
     document.getElementById("remove").muted = true;
-
     localStorage.setItem("unmute", false);
   } else {
     muteButton.innerHTML = `<i class="fa-solid fa-volume-xmark sound-icon" id="mute-icon"></i>Sesi kapa`;
@@ -94,17 +93,24 @@ function renderList() {
 }
 
 function checkInputLength() {
-  if (input.value.length >= 14 && input.value.length <= 19) {
-    letterCountWrapper.classList.add("warning");
-    letterCountWrapper.classList.remove("stop");
-  } else if (input.value.length === 20) {
-    letterCountWrapper.classList.remove("warning");
+  if (input.value.length >0){
+    document.getElementById("wrapper").classList.add("active")
+  } else{
+        document.getElementById("wrapper").classList.remove("active");
 
-    letterCountWrapper.classList.add("stop");
-  } else {
-    letterCountWrapper.classList.remove("warning");
-    letterCountWrapper.classList.remove("stop");
   }
+
+    if (input.value.length >= 14 && input.value.length <= 19) {
+      letterCountWrapper.classList.add("warning");
+      letterCountWrapper.classList.remove("stop");
+    } else if (input.value.length === 20) {
+      letterCountWrapper.classList.remove("warning");
+
+      letterCountWrapper.classList.add("stop");
+    } else {
+      letterCountWrapper.classList.remove("warning");
+      letterCountWrapper.classList.remove("stop");
+    }
 }
 
 //Functions end
@@ -128,6 +134,8 @@ input.addEventListener("keydown", (event) => {
     letterCount.textContent = "0";
     letterCountWrapper.classList.remove("warning");
     letterCountWrapper.classList.remove("stop");
+    document.getElementById("wrapper").classList.remove("active");
+
 
     itemsArray.push({ text: input.value, lineThrough: false });
     localStorage.setItem("items", JSON.stringify(itemsArray));
