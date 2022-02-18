@@ -93,17 +93,11 @@ function renderList() {
 }
 
 function checkInputLength() {
-  if (input.value.length >0){
-    document.getElementById("wrapper").classList.add("active")
-  } else{
-        document.getElementById("wrapper").classList.remove("active");
-
-  }
-
-    if (input.value.length >= 14 && input.value.length <= 19) {
+      const count=Number(letterCount.textContent)
+    if (count >= 14 && count <= 19) {
       letterCountWrapper.classList.add("warning");
       letterCountWrapper.classList.remove("stop");
-    } else if (input.value.length === 20) {
+    } else if (count === 20) {
       letterCountWrapper.classList.remove("warning");
 
       letterCountWrapper.classList.add("stop");
@@ -111,6 +105,12 @@ function checkInputLength() {
       letterCountWrapper.classList.remove("warning");
       letterCountWrapper.classList.remove("stop");
     }
+
+     if (count > 0) {
+       document.getElementById("wrapper").classList.add("active");
+     } else {
+       document.getElementById("wrapper").classList.remove("active");
+     }
 }
 
 //Functions end
@@ -119,6 +119,7 @@ renderList();
 var max = 20;
 
 input.addEventListener("input", () => {
+  letterCount.textContent = input.value.length;
   input.value = input.value.replace(/[><]/g, "");
 });
 
@@ -127,7 +128,7 @@ input.addEventListener("keyup", function (event) {
 });
 
 input.addEventListener("keydown", (event) => {
-  letterCount.textContent = input.value.length;
+  
   checkInputLength();
 
   if (event.key === "Enter" && input.value.trim() !== "") {
