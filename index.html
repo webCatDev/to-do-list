@@ -41,6 +41,7 @@
             placeholder="Listene bir şey ekle"
             id="input"
             maxlength="20"
+            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
           />
           <div class="letter-count-wrapper" id="letter-wrapper">
             <span id="letter-count">0</span><span>/20</span>

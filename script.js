@@ -131,7 +131,6 @@ input.addEventListener("input", () => {
   letterCount.textContent = input.value.length;
   input.value = input.value.replace(/[><]/g, "");
   
-  
 });
 
 
