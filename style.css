@@ -51,11 +51,11 @@ body {
   max-width: 50rem;
   margin: 0 auto;
   padding: 4rem 0;
-  border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
+  border-radius: 3px;
   box-shadow: 1px 2px 10px black;
   overflow: auto;
 }
@@ -81,19 +81,19 @@ body {
 }
 #settings-button {
   cursor: pointer;
-  transition: transform 1s ease-in-out;
   -webkit-transition: transform 1s ease-in-out;
   -moz-transition: transform 1s ease-in-out;
   -ms-transition: transform 1s ease-in-out;
   -o-transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
 }
 
 #settings-button.active {
-  transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
   -moz-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
   -o-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .settings-list {
@@ -103,26 +103,26 @@ body {
   top: -2.6rem;
   visibility: hidden;
   opacity: 0;
-  transform: translateX(120%);
   -webkit-transform: translateX(120%);
   -moz-transform: translateX(120%);
   -ms-transform: translateX(120%);
   -o-transform: translateX(120%);
-  transition: all 1s ease-in-out;
+  transform: translateX(120%);
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   -ms-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 .settings-list.active {
   visibility: visible;
   opacity: 1;
-  transform: translateX(-20%);
   -webkit-transform: translateX(-20%);
   -moz-transform: translateX(-20%);
   -ms-transform: translateX(-20%);
   -o-transform: translateX(-20%);
+  transform: translateX(-20%);
 }
 
 .settings-list-item {
@@ -145,11 +145,11 @@ body {
   position: absolute;
   top: 50%;
   right: 5%;
-  transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
+  transform: translateY(-50%);
   color: gray;
 }
 
@@ -167,11 +167,11 @@ input {
   padding: 1.5rem;
   outline: none;
   border: none;
-  border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
+  border-radius: 3px;
   position: relative;
 }
 
@@ -183,26 +183,26 @@ input {
   color: rgba(247, 244, 244, 0.446);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(5rem);
   -webkit-transform: translateY(5rem);
   -moz-transform: translateY(5rem);
   -ms-transform: translateY(5rem);
   -o-transform: translateY(5rem);
-  transition: all 1s ease;
+  transform: translateY(5rem);
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
  .wrapper.active::before{
   visibility: visible;
   opacity: 1;
-  transform: translateY(2rem);
   -webkit-transform: translateY(2rem);
   -moz-transform: translateY(2rem);
   -ms-transform: translateY(2rem);
   -o-transform: translateY(2rem);
+  transform: translateY(2rem);
 }
 
 
@@ -216,11 +216,11 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
+  border-radius: 3px;
 }
 
 li:first-child {
@@ -253,11 +253,11 @@ li:not(:last-child) {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  transition: all 100ms ease-in;
   -webkit-transition: all 100ms ease-in;
   -moz-transition: all 100ms ease-in;
   -ms-transition: all 100ms ease-in;
   -o-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
 }
 
 .text.finished::before {
@@ -287,11 +287,11 @@ li:not(:last-child) {
 
 .done {
   background-color: rgb(13, 177, 13);
-  border-radius: 0 3px 3px 0;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   -ms-border-radius: 0 3px 3px 0;
   -o-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
 }
 
 .done:hover {
@@ -313,23 +313,23 @@ li:not(:last-child) {
   justify-content: center;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   border: 1rem dashed #1a1919;
-  transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
   -webkit-transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
   -moz-transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
   -ms-transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
   -o-transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out;
   z-index: 99;
-  border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
+  border-radius: 3px;
 }
 
 .are-you-sure>*:not(:last-child){
