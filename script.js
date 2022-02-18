@@ -32,6 +32,8 @@ settingsButton.addEventListener("click", () => {
     localStorage.setItem("unmute", true);
   }
 
+  
+
 
 muteButton.addEventListener("click", () => {
 
@@ -107,7 +109,8 @@ function checkInputLength() {
       letterCountWrapper.classList.remove("warning");
 
       letterCountWrapper.classList.add("stop");
-    } else {
+    }
+    else {
       letterCountWrapper.classList.remove("warning");
       letterCountWrapper.classList.remove("stop");
     }
